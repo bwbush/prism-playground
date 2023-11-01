@@ -89,7 +89,7 @@ if [[ -n $1 ]]; then
 fi
 
 NAME="${NAME:=local}"
-PORT="${PORT:=80}"
+PORT="${PORT:=9980}"
 ENV_FILE="${ENV_FILE:=${SCRIPT_DIR}/.env}"
 DIDCOMM_SERVICE_ENDPOINT="${DIDCOMM_SERVICE_ENDPOINT:=http://${DOCKERHOST}:${PORT}/didcomm}"
 
@@ -105,7 +105,7 @@ echo "--------------------------------------"
 
 PORT=${PORT} \
 DIDCOMM_SERVICE_ENDPOINT=${DIDCOMM_SERVICE_ENDPOINT} \
-docker compose \
+podman-compose \
 	-p ${NAME} \
 	-f ${SCRIPT_DIR}/docker-compose.yml \
 	--env-file ${ENV_FILE} ${DEBUG} up ${BACKGROUND} ${WAIT}

@@ -25,12 +25,12 @@ function getDockerHost() {
     unset dockerHostAddress
     if [[ $(uname) == "Linux" ]] ; then
       if [[ "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then
-        dockerHostAddress=host.docker.internal
+        dockerHostAddress=host.containers.internal
       else
-        dockerHostAddress=$(docker run --rm --net=host eclipse/che-ip)
+        dockerHostAddress=$(podman run --rm --net=host eclipse/che-ip)
       fi
     else
-      dockerHostAddress=host.docker.internal
+      dockerHostAddress=host.containers.internal
     fi
     echo ${DOCKERHOST:-${APPLICATION_URL:-${dockerHostAddress}}}
   )

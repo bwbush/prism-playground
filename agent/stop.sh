@@ -55,7 +55,7 @@ if [[ -n $1 ]]; then
 fi
 
 NAME="${NAME:=local}"
-PORT="${PORT:=80}"
+PORT="${PORT:=9980}"
 
 echo "NAME            = ${NAME}"
 
@@ -63,7 +63,7 @@ echo "--------------------------------------"
 echo "Stopping stack using docker compose"
 echo "--------------------------------------"
 
-PORT=${PORT} docker compose \
+PORT=${PORT} podman-compose \
   -p ${NAME} \
   -f ${SCRIPT_DIR}/docker-compose.yml \
   --env-file ${SCRIPT_DIR}/.env down ${VOLUMES}

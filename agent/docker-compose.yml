@@ -80,7 +80,7 @@ services:
       timeout: 10s
       retries: 5
     extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - "oryx:192.168.0.9"
 
   vault-server:
     image: hashicorp/vault:latest
